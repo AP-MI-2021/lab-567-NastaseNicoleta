@@ -15,7 +15,7 @@ def testAdaugaRezervare():
 def testStergereRezervare():
     lista = []
     lista = adaugaRezervare("454", "Costachescu", "business", 400, "da", lista)
-    lista= adaugaRezervare("325", "Grigore", "economy", 230, "nu", lista)
+    lista = adaugaRezervare("325", "Grigore", "economy", 230, "nu", lista)
 
     lista = stergeRezervare("454", lista)
     assert len(lista) == 1
@@ -25,5 +25,29 @@ def testStergereRezervare():
     lista = stergeRezervare("101", lista)
     assert len(lista) == 1
     assert getById("325", lista) is not None
+
+def testModificareRezervare():
+    lista = []
+    lista = adaugaRezervare("454", "Costachescu", "business", 400, "da", lista)
+    lista = adaugaRezervare("325", "Grigore", "economy", 230, "nu", lista)
+
+    lista = modificaRezervarea("454", "Dumitru", "economy", 230, "nu", lista)
+    rezervareUpdatata = getById("454", lista)
+    assert getId(rezervareUpdatata) == "454"
+    assert getNume(rezervareUpdatata) == "Dumitru"
+    assert getClasa(rezervareUpdatata) == "economy"
+    assert getPret(rezervareUpdatata) == 230
+    assert getCheckin_facut(rezervareUpdatata) == "nu"
+
+
+    rezervareNeupdatata = getById("325", lista)
+    assert getId(rezervareNeupdatata) == "325"
+    assert getNume(rezervareNeupdatata) == "Grigore"
+    assert getClasa(rezervareNeupdatata) == "economy"
+    assert getPret(rezervareNeupdatata) == 230
+    assert getCheckin_facut(rezervareNeupdatata) == "nu"
+
+
+
 
 

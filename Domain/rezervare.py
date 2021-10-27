@@ -6,7 +6,7 @@ def creeaza_rezervare(id, nume, clasa, pret, checkin_facut):
     :param clasa: string
     :param pret: float
     :param checkin_facut: string
-    :return:
+    :return: o lista
 
     '''
     rezervare = []

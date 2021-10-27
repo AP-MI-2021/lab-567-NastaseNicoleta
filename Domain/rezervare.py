@@ -9,15 +9,15 @@ def creeaza_rezervare(id, nume, clasa, pret, checkin_facut):
     :return:
 
     '''
+    rezervare = []
+    rezervare.append(id)
+    rezervare.append(nume)
+    rezervare.append(clasa)
+    rezervare.append(pret)
+    rezervare.append(checkin_facut)
+    return rezervare
 
-    return {
-        "id": id,
-        "nume": nume,
-        "clasa": clasa,
-        "pret": pret,
-        "checkin_facut": checkin_facut
 
-    }
 
 def getId(rezervare):
     '''
@@ -25,7 +25,7 @@ def getId(rezervare):
     :param rezervare: un dictionar ce retine o rezervare
     :return: id-ul rezervarii
     '''
-    return rezervare["id"]
+    return rezervare[0]
 
 def getNume(rezervare):
     '''
@@ -33,7 +33,7 @@ def getNume(rezervare):
     :param rezervare: un dictionare ce retine o rezervare
     :return: numele folosit pentru rezervare
     '''
-    return rezervare["nume"]
+    return rezervare[1]
 
 def getClasa(rezervare):
     '''
@@ -41,7 +41,7 @@ def getClasa(rezervare):
     :param rezervare: un dictionar ce retine o rezervare
     :return: clasa rezervarii
     '''
-    return rezervare["clasa"]
+    return rezervare[2]
 
 def getPret(rezervare):
     '''
@@ -49,15 +49,14 @@ def getPret(rezervare):
     :param rezervare: un dictionar ce retine o rezervare
     :return: pretul rezervarii
     '''
-    return rezervare["pret"]
-
+    return rezervare[3]
 def getCheckin_facut(rezervare):
     '''
     ia stadiul checkin-ului unei rezervari
     :param rezervare: un dictionar ce retine o rezervare
     :return: stadiul checkin-unului rezervarii
     '''
-    return rezervare["checkin_facut"]
+    return rezervare[4]
 
 def toString(rezervare):
     return "Id: {}, Nume: {}, Clasa: {}, Pret: {}, Checkin_facut: {}".format(

@@ -38,14 +38,14 @@ def stergeRezervare(id, lista):
 
 def modificaRezervarea(id, nume, clasa, pret, checkin_facut, lista):
     '''
-    
-    :param id: 
-    :param nume: 
-    :param clasa: 
-    :param pret: 
-    :param checkin_facut: 
-    :param lista: 
-    :return: 
+    modifica rezervarea cu un id dat
+    :param id: string
+    :param nume: string
+    :param clasa: string
+    :param pret: float
+    :param checkin_facut: string
+    :param lista: o lista de rezervari facute
+    :return: noua lista cu modificarile facute
     '''
     listaNoua = []
     for rezervare in lista:

@@ -35,6 +35,8 @@ def mainCommandLine(listaNoua):
                         listaNoua = stergeRezervare(ID, listaNoua)
                     elif elementNou[0] == "Modifica":
                         try:
+                            if len(elementNou) != 6:
+                                raise ValueError("Trebuie sa introduceti exact 5 date adica id, nume, clasa, pret, checkin facut! ")
                             ID = elementNou[1]
                             nume = elementNou[2]
                             clasa = elementNou[3]

@@ -20,14 +20,27 @@ def mainCommandLine(listaNoua):
                     elementNou = elemente.split(",")
                     if elementNou[0] == "Adauga":
                         try:
-                            listaNoua = adaugaRezervare(elementNou[1], elementNou[2], elementNou[3], float(elementNou[4]), elementNou[5])
+                            if len(elementNou) != 6:
+                                raise ValueError("Trebuie sa introduceti exact 5 date adica id,nume,pret,locatie,descriere! ")
+                            ID = elementNou[1]
+                            nume = elementNou[2]
+                            clasa = elementNou[3]
+                            pret = float(elementNou[4])
+                            checkin_facut = elementNou[5]
+                            listaNoua = adaugaRezervare(ID, nume, clasa, pret, checkin_facut, listaNoua)
                         except ValueError:
                             print("Eroare! Nu ati introdus un numar zecimal pentru pretul rezervarii. Reincercati!")
                     elif elementNou[0] == "Sterge":
-                        listaNoua = stergeRezervare(elementNou[1], listaNoua)
+                        ID = elementNou[1]
+                        listaNoua = stergeRezervare(ID, listaNoua)
                     elif elementNou[0] == "Modifica":
                         try:
-                            listaNoua = modificaRezervarea(elementNou[1], elementNou[2], elementNou[3], float(elementNou[4]), elementNou[5])
+                            ID = elementNou[1]
+                            nume = elementNou[2]
+                            clasa = elementNou[3]
+                            pret = float(elementNou[4])
+                            checkin_facut = elementNou[5]
+                            listaNoua = modificaRezervarea(ID, nume, clasa, pret, checkin_facut, listaNoua)
                         except ValueError:
                             print("Eroare! Nu ati introdus un numar zecimal pentru pretul rezervarii. Reincercati!")
                     elif elementNou[0] == "Afiseaza":
@@ -37,5 +50,6 @@ def mainCommandLine(listaNoua):
 
 listaNoua = []
 mainCommandLine(listaNoua)
+
 
 

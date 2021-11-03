@@ -1,5 +1,7 @@
 from Domain.rezervare import getId, getNume, getClasa, getPret, getCheckin_facut
-from Logic.CRUD import adaugaRezervare, getById, stergeRezervare
+from Logic.CRUD import adaugaRezervare, getById, stergeRezervare, modificaRezervarea
+from Logic.functionalitati import trecereLaClasaSuperioara, ieftinireRezervariCuCheckinFacut, \
+    determinarePretMaximPeClasa
 
 
 def testAdaugaRezervare():
@@ -46,6 +48,16 @@ def testModificareRezervare():
     assert getClasa(rezervareNeupdatata) == "economy"
     assert getPret(rezervareNeupdatata) == 230
     assert getCheckin_facut(rezervareNeupdatata) == "nu"
+
+
+
+
+
+
+
+
+
+
 
 
 

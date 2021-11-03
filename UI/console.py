@@ -1,11 +1,16 @@
 from Domain.rezervare import toString
 from Logic.CRUD import adaugaRezervare, stergeRezervare, modificaRezervarea
+from Logic.functionalitati import trecereLaClasaSuperioara, ieftinireRezervariCuCheckinFacut, \
+    determinarePretMaximPeClasa
 
 
 def printMenu():
     print("1. Adauga rezervare")
     print("2. Sterge rezervare")
     print("3. Modifica rezervare")
+    print("4. Trecere rezervare cu un nume dat la o clasa superioara")
+    print("5. Ieftinire pret rezervari, care au checkin-ul facut, cu un procentaj dat ")
+    print("6. Determinare pret maxim pe clase")
     print("a. Afisare rezervari")
     print("x. Iesire")
 
@@ -32,6 +37,33 @@ def uiModificareRezervare(lista):
     checkin_facut = input("Dati noul stadiu al checkin-ului: ")
     return modificaRezervarea(id, nume, clasa, pret, checkin_facut, lista)
 
+def uiTrecereLaClasaSuperioara(lista):
+    try:
+        nume = input("Dati numele pentru care doriti sa se modifice clasa:")
+        return trecereLaClasaSuperioara(nume, lista)
+    except ValueError as ve:
+        print("Eroare: {}".format(ve))
+        return lista
+
+def uiIeftinirePretRezervariCuCheckinFacut(lista):
+    try:
+        procentaj = float(input("Dati procentajul cu care doriti sa se faca ieftinirea:"))
+        return ieftinireRezervariCuCheckinFacut(procentaj, lista)
+    except ValueError as ve:
+        print("Eroare: {}".format(ve))
+        return lista
+
+def uiDeterminarePretMaximPeClasa(lista):
+    try:
+        pretMaximEconomy, pretMaximEconomyPlus, pretMaximBusiness = determinarePretMaximPeClasa(lista)
+        print("Pretul maxim la clasa economy este " + str(pretMaximEconomy))
+        print("Pretul maxim la clasa economy_plus este " + str(pretMaximEconomyPlus))
+        print("Pretul maxim la clasa business este " + str(pretMaximBusiness))
+    except ValueError as ve:
+        print("Eroare: {}".format(ve))
+        return lista
+
+
 
 def showAll(lista):
     for rezervare in lista:
@@ -49,6 +81,12 @@ def runMenu(lista):
             lista = uiStergereRezervare(lista)
         elif optiune == "3":
             lista = uiModificareRezervare(lista)
+        elif optiune == "4":
+            lista = uiTrecereLaClasaSuperioara(lista)
+        elif optiune == "5":
+            lista = uiIeftinirePretRezervariCuCheckinFacut(lista)
+        elif optiune == "6":
+            lista=uiDeterminarePretMaximPeClasa(lista)
         elif optiune == "a":
             showAll(lista)
         elif optiune == "x":

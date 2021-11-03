@@ -1,4 +1,4 @@
-def creeaza_rezervare(id, nume, clasa, pret, checkin_facut):
+def creeaza_rezervare(id, nume, clasa, pret :float, checkin_facut):
     '''
     creeaza un dictionar pentru o rezervare facuta la o companie aeriana
     :param id: string

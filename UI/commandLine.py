@@ -21,7 +21,7 @@ def mainCommandLine(listaNoua):
                     if elementNou[0] == "Adauga":
                         try:
                             if len(elementNou) != 6:
-                                raise ValueError("Trebuie sa introduceti exact 5 date adica id,nume,pret,locatie,descriere! ")
+                                raise ValueError("Trebuie sa introduceti exact 5 date adica id, nume, clasa, pret, checkin facut! ")
                             ID = elementNou[1]
                             nume = elementNou[2]
                             clasa = elementNou[3]

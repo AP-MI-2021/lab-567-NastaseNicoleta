@@ -12,6 +12,14 @@ def adaugaRezervare(id, nume, clasa, pret, checkin_facut, lista):
     :param lista: o lista de rezervari
     :return: o lista continand vechile rezervari si nou rezervare
     '''
+    if getById(id, lista) is not None:
+        raise ValueError("Id-ul exista deja!")
+    if clasa != "economy" and clasa != "economy plus" and clasa != "business":
+        raise ValueError("Clasele posibile sunt economy, economy plus si business!")
+    if pret < 0:
+        raise ValueError("Pretul nu poate fi negativ!")
+    if checkin_facut != "da" and checkin_facut != "nu":
+        raise ValueError("Checkin-ul poate sa aiba doar valorile da sau nu!")
     rezervare = creeaza_rezervare(id, nume, clasa, pret, checkin_facut)
     return lista + [rezervare]
 
@@ -34,6 +42,8 @@ def stergeRezervare(id, lista):
     :param lista: o lista de rezervari a unei companii aeriene
     :return:
     '''
+    if getById(id, lista) is None:
+        raise ValueError("Rezervarea cu acest id nu exista!")
     return [rezervare for rezervare in lista if getId(rezervare) != id]
 
 def modificaRezervarea(id, nume, clasa, pret, checkin_facut, lista):
@@ -47,6 +57,14 @@ def modificaRezervarea(id, nume, clasa, pret, checkin_facut, lista):
     :param lista: o lista de rezervari facute
     :return: noua lista cu modificarile facute
     '''
+    if getById(id, lista) is None:
+        raise ValueError("Rezervarea cu acest id nu exista!")
+    if clasa != "economy" and clasa != "economy plus" and clasa != "business":
+        raise ValueError("Clasele posibile sunt economy, economy plus si business!")
+    if pret < 0:
+        raise ValueError("Pretul nu poate fi negativ!")
+    if checkin_facut != "da" and checkin_facut != "nu":
+        raise ValueError("Checkin-ul poate sa aiba doar valorile da sau nu!")
     listaNoua = []
     for rezervare in lista:
         if getId(rezervare) == id:

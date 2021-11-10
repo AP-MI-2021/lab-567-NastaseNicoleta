@@ -24,9 +24,6 @@ def testStergereRezervare():
     assert getById("454", lista) is None
     assert getById("325", lista) is not None
 
-    lista = stergeRezervare("101", lista)
-    assert len(lista) == 1
-    assert getById("325", lista) is not None
 
 def testModificareRezervare():
     lista = []

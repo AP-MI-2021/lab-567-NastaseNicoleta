@@ -1,5 +1,6 @@
 from Teste.testCRUD import testAdaugaRezervare, testStergereRezervare, testModificareRezervare
-from Teste.testFunctionalitati import testTrecereLaClasaSuperioara, testIeftinirePretCuUnProcentajDat, testDeterminarePretMaximPeClasa
+from Teste.testFunctionalitati import testTrecereLaClasaSuperioara, testIeftinirePretCuUnProcentajDat, \
+    testDeterminarePretMaximPeClasa, testOrdonareDescDupaPret, testSumaPreturilorPentruFiecareNume, testUndoRedo
 from Teste.testDomain import testRezervare
 
 
@@ -11,4 +12,7 @@ def runAllTests():
     testTrecereLaClasaSuperioara()
     testIeftinirePretCuUnProcentajDat()
     testDeterminarePretMaximPeClasa()
+    testOrdonareDescDupaPret()
+    testSumaPreturilorPentruFiecareNume()
+    testUndoRedo()
 

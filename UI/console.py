@@ -80,10 +80,17 @@ def uiDeterminarePretMaximPeClasa(lista):
         print("Pretul maxim la clasa business este " + str(pretMaximBusiness))
     except ValueError as ve:
         print("Eroare: {}".format(ve))
-        return lista
+
+
 
 def uiOrdonareDescDupaPret(lista):
-    return ordonareDescDupaPret(lista)
+    listaNoua = []
+    listaNoua = ordonareDescDupaPret(lista)
+    if len(listaNoua) > 0:
+        print("Rezervarile ordonate sunt:")
+        showAll(listaNoua)
+    else:
+        print("Nu exista rezervari")
 
 def uiSumaPreturilorPentruFiecareNume(lista):
     suma = sumaPreturilorPentruFiecareNume(lista)
@@ -93,8 +100,12 @@ def uiSumaPreturilorPentruFiecareNume(lista):
 
 
 def showAll(lista):
-    for rezervare in lista:
-        print(toString(rezervare))
+    if len(lista) > 0:
+        for rezervare in lista:
+            print(toString(rezervare))
+
+    else:
+        print("Nu exista rezervari")
 
 
 def runMenu(lista):
@@ -105,7 +116,6 @@ def runMenu(lista):
         optiune = input("Dati optiunea: ")
 
         if optiune == "1":
-            undoList.append(lista)
             lista = uiAdaugareRezervare(lista, undoList, redoList)
         elif optiune == "2":
             lista = uiStergereRezervare(lista, undoList, redoList)
@@ -116,11 +126,11 @@ def runMenu(lista):
         elif optiune == "5":
             lista = uiIeftinirePretRezervariCuCheckinFacut(lista, undoList, redoList)
         elif optiune == "6":
-            lista = uiDeterminarePretMaximPeClasa(lista)
+            uiDeterminarePretMaximPeClasa(lista)
         elif optiune == "7":
-            lista = uiOrdonareDescDupaPret(lista)
+            uiOrdonareDescDupaPret(lista)
         elif optiune == "8":
-            lista = uiSumaPreturilorPentruFiecareNume(lista)
+            uiSumaPreturilorPentruFiecareNume(lista)
         elif optiune == "u":
             if len(undoList) > 0:
                 redoList.append(lista)
@@ -139,6 +149,8 @@ def runMenu(lista):
             break
         else:
             print("Optiune gresita! Reincercati: ")
+
+
 
 
 
